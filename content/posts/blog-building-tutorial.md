@@ -210,6 +210,7 @@ git push -u origin master
 ```
 cd /var/www/blog
 git clone git@github.com:chency147/blog.git .
+git submodule init
 git submodule update
 hugo -D
 ```
@@ -233,6 +234,7 @@ mv webhook-linux-amd64/webhook /usr/local/bin/
 cd /var/www/blog
 git checkout master
 git pull
+git submodule init
 git submodule update
 hugo -D
 ```
@@ -318,6 +320,32 @@ location ~ ^/XXXXXXXX/webhook/(.*) {
 ![9nDSd.jpg](https://wx1.sbimg.cn/2020/09/12/9nDSd.jpg)
 
 执行完上述配置之后，我们随便修改一下文章内容，然后进行一次Git提交和推送，博客的文章就能自动更新啦！
+
+### Server酱通知
+根据Server酱[官方网站](http://sc.ftqq.com/3.version)上的接入流程，登录账号获取到自己的SCKEY，然后修改博客部署脚本为以下内容即可。
+```
+#!/bin/bash
+# 博客文件拉取
+cd /var/www/blog
+git checkout master
+git pull
+git submodule init
+git submodule update
+
+# 获取编译结果
+result=`hugo -D`
+# 使用server酱进行通知
+secret="Server酱官网获取到SCKEY"
+# 标题、内容 URL编码
+title=$(echo -e "Rick Chen Blog 更新完毕" | od -An -tx1 | tr ' ' % | xargs printf "%s")
+content="以下为执行博客渲染指令输出内容\n\`\`\`\n${result}\n\`\`\`\n时间："`date "+%Y-%m-%d %H:%M:%S"`
+content=$(echo -e "${content}" | od -An -tx1 | tr ' ' % | xargs printf "%s")
+curl "https://sc.ftqq.com/${secret}.send?text=${title}&desp=${content}"
+```
+
+然后再尝试推送看看，就能收到编译结果的通知啦。
+
+[![9n8Km.md.jpg](https://wx1.sbimg.cn/2020/09/12/9n8Km.md.jpg)](https://sbimg.cn/image/9n8Km)
 
 
 ## 总结
