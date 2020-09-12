@@ -98,20 +98,8 @@ pygmentscodefencesguesssyntax = true
     # 当你没有在文章前置参数中设置 "hiddenFromHomePage" 时的默认行为
     defaultHiddenFromHomePage = false
   
-# Valine.
-# You can get your appid and appkey from https://leancloud.cn
-# more info please open https://valine.js.org
-[params.valine]
-  enable = false
-  appId = ""
-  appKey = ""
-  placeholder = " "
-  visitor = true
-
 # Your socail's url
 [social]
-  github = "https://github.com/chency147"
-  weibo = "https://weibo.com/chency147"
 
 [markup]
 [markup.goldmark]
@@ -122,3 +110,56 @@ pygmentscodefencesguesssyntax = true
 [markup.tableOfContents]
   startLevel = 2
   endLevel = 6
+
+[params.page.share]
+  enable = true
+  Twitter = true
+  Facebook = true
+  Linkedin = false
+  Whatsapp = false
+  Pinterest = false
+  Tumblr = false
+  HackerNews = false
+  Reddit = false
+  VK = false
+  Buffer = false
+  Xing = false
+  Line = true
+  Instapaper = false
+  Pocket = false
+  Digg = false
+  Stumbleupon = false
+  Flipboard = false
+  Weibo = true
+  Renren = false
+  Myspace = false
+  Blogger = false
+  Baidu = true
+  Odnoklassniki = false
+  Evernote = false
+  Skype = false
+  Trello = false
+  Mix = false
+
+[languages.zh-cn]
+  weight = 2
+  # 网站语言, 仅在这里 CN 大写
+  languageCode = "zh-CN"
+  # 语言名称
+  languageName = "简体中文"
+  # 是否包括中日韩文字
+  hasCJKLanguage = true
+  # 默认每页列表显示的文章数目
+  paginate = 12
+  # [UA-XXXXXXXX-X] 谷歌分析代号
+  googleAnalytics = ""
+  # 版权描述，仅仅用于 SEO
+  copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."
+  [languages.zh-cn.params.social]
+    GitHub = "chency147"
+    Weibo = "chency147"
+    Zhihu = "chen-cong-ying-92"
+    Douban = "152377415"
+    Bilibili = "1622087"
+    Steam = "chency147"
+    RSS = true
