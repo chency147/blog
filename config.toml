@@ -1,8 +1,8 @@
 baseURL = "https://blog.rickchen.info/"
-languageCode = "zh"
-defaultContentLanguage = "zh"
+languageCode = "zh-CN"
+defaultContentLanguage = "zh-cn"
 title = "聪了个颖"                         # site title  # 网站标题
-theme = "zozo"
+theme = "LoveIt"
 hasCJKLanguage = true                  # has chinese/japanese/korean ?  # 自动检测是否包含 中文\日文\韩文
 summaryLength = 100
 paginate = 4                           # shows the number of articles  # 首页显示文章数量
@@ -41,7 +41,9 @@ pygmentscodefencesguesssyntax = true
   identifier = "about"
   url = "/about/"
 
+
 [params]
+  version = "0.2.X"
   subTitle = "blog.rickchen.info"                                       # site's subTitle  # 网站二级标题
   footerSlogan = ""                                   # site's footer slogan  # 网站页脚标语
   keywords = ["Hugo","theme","zozo"]                                  # site's keywords  # 网站关键字
@@ -69,3 +71,8 @@ pygmentscodefencesguesssyntax = true
 [markup.goldmark]
 [markup.goldmark.renderer]
   unsafe = true
+[markup.highlight]
+  noClasses = false
+[markup.tableOfContents]
+  startLevel = 2
+  endLevel = 6
