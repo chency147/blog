@@ -1,10 +1,11 @@
 ---
-title: "hugo + GitHub Webhook 博客搭建教程"
+title: "Hugo + GitHub Webhook 博客搭建教程"
 date: 2020-09-12T13:46:44+08:00
 lastmod: 2020-09-12T13:46:44+08:00
 draft: ture
 toc:
   auto: false
+featuredImage: https://wx2.sbimg.cn/2020/09/12/9x1l4.jpg
 ---
 
 ## 写在前面
