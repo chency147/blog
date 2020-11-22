@@ -4,7 +4,7 @@ date: 2020-09-24T01:44:54+08:00
 draft: true
 toc:
   auto: false
-featuredImage: https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/secure-remove/cover.jpg
+# featuredImage: https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/secure-remove/cover.jpg
 ---
 
 {{< admonition danger >}}
