@@ -5,7 +5,7 @@ lastmod: 2020-09-12T13:46:44+08:00
 draft: ture
 toc:
   auto: false
-featuredImage: https://wx2.sbimg.cn/2020/09/12/9x1l4.jpg
+featuredImage: https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/blog-building-tutorial-cover.png
 ---
 
 ## 写在前面
@@ -77,7 +77,7 @@ HTTPS 支持有两种，CDN方式 和 申请SSL证书方式。
 #### CDN方式（推荐）
 推荐直接使用 [Cloudﬂare](https://www.cloudflare.com/) 管理的域名，它可以帮助我们非常方便地支持 HTTPS；
 
-![Cloudflare HTTPS 配置界面](https://wx1.sbimg.cn/2020/09/12/9UKWK.jpg)
+![Cloudflare HTTPS 配置界面](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/blog-building-tutorial/cloudflare-ssl.png)
 
 #### SSL证书方式
 可使用免费的 [Let's Entrypt](https://letsencrypt.org/zh-cn/) 进行申请，现在已经支持申请泛域名。相关指令收录如下：
@@ -189,10 +189,10 @@ cat ~/.ssh/id_rsa.pub
 # cat 指令输出即为公钥内容
 ```
 将上述输出的公钥内容拷贝并添加到 GitHub SSH Key 管理页面中：
-![9i3Xa.jpg](https://wx1.sbimg.cn/2020/09/12/9i3Xa.jpg)
+![github-sshkey-1.jpg](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/blog-building-tutorial/github-sshkey-1.jpg)
 <center style="font-size:14px;color:#C0C0C0;text-decoration:underline">SSH KEY添加[1]</center> 
 
-![9iPxM.jpg](https://wx1.sbimg.cn/2020/09/12/9iPxM.jpg)
+![github-sshkey-2.jpg](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/blog-building-tutorial/github-sshkey-2.jpg)
 <center style="font-size:14px;color:#C0C0C0;text-decoration:underline">SSK KEY添加[2]</center> 
 
 由于服务器端也需要拉取工程内容，所以服务器端 blog 用户的公钥也需要添加到GitHub配置中。
@@ -317,8 +317,8 @@ location ~ ^/XXXXXXXX/webhook/(.*) {
 #### GitHub端
 进入仓库的 Settings 页卡，选择 Webhooks 选项，在页面上进行 webhook 添加；
 
-![9nkfJ.jpg](https://wx2.sbimg.cn/2020/09/12/9nkfJ.jpg)
-![9nDSd.jpg](https://wx1.sbimg.cn/2020/09/12/9nDSd.jpg)
+![](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/blog-building-tutorial/github-webhook-1.jpg)
+![](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/blog-building-tutorial/github-webhook-2.jpg)
 
 执行完上述配置之后，我们随便修改一下文章内容，然后进行一次Git提交和推送，博客的文章就能自动更新啦！
 
@@ -346,7 +346,7 @@ curl "https://sc.ftqq.com/${secret}.send?text=${title}&desp=${content}"
 
 然后再尝试推送看看，就能收到编译结果的通知啦。
 
-[![9n8Km.md.jpg](https://wx1.sbimg.cn/2020/09/12/9n8Km.md.jpg)](https://sbimg.cn/image/9n8Km)
+![](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/blog-building-tutorial/wechat-notice.jpg)
 
 
 ## 总结
