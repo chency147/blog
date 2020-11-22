@@ -4,7 +4,7 @@ date: 2020-09-24T01:44:54+08:00
 draft: true
 toc:
   auto: false
-featuredImage: https://wx1.sbimg.cn/2020/09/24/GzQjI.jpg
+featuredImage: https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/secure-remove/cover.jpg
 ---
 
 {{< admonition danger >}}
@@ -76,9 +76,9 @@ echo 'alias rm="/usr/bin/securityremove"' >> /etc/bashrc
 
 随后使用 rm 指令删除操作就会有确认和检查了~
 
-![GzGDR.jpg](https://wx2.sbimg.cn/2020/09/24/GzGDR.jpg)
+![](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/secure-remove/command-1.jpg)
 
-![Gz6ra.jpg](https://wx2.sbimg.cn/2020/09/24/Gz6ra.jpg)
+![](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/secure-remove/command-2.jpg)
 
 ### 已知问题
 如果文件名中带有空格时会删除失败，这时候需要用 `\rm` 指令来进行删除。
