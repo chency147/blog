@@ -5,7 +5,7 @@ lastmod: 2020-09-12T13:46:44+08:00
 draft: ture
 toc:
   auto: false
-featuredImage: https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/blog-building-tutorial-cover.png
+featuredImage: https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/blog-building-tutorial/cover.jpg
 ---
 
 ## 写在前面
