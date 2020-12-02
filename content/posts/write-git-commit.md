@@ -142,10 +142,11 @@ echo '{ "path": "cz-customizable" }' > ~/.czrc
 ### 安装
 安装指令如下：
 ```bash
-npm install -g @commitlint/cli @commitlint/config-conventional
+npm install -g @commitlint/cli
 ```
 然后在自己的工程目录的根目录下执行如下指令指定适配器：
 ```bash
+npm install --save-dev @commitlint/config-conventional
 echo "module.exports = {extends: ['@commitlint/config-conventional']}" > commitlint.config.js
 ```
 ### 验证
