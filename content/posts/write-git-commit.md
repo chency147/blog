@@ -128,7 +128,7 @@ echo '{ "path": "cz-customizable" }' > ~/.czrc
 ```
 
 ### 配置
-插件官方的配置下载地址[在此](https://raw.githubusercontent.com/leoforfree/cz-customizable/master/cz-config-EXAMPLE.js)，我们可以在此基础上进行汉化以及定制处理，可通过[这个链接](/write-git-commit/cz-config.js)直接下载内容；
+插件官方的配置下载地址[在此](https://raw.githubusercontent.com/leoforfree/cz-customizable/master/cz-config-EXAMPLE.js)，我们可以在此基础上进行汉化以及定制处理，可通过[这个链接](/assets/write-git-commit/cz-config.js)直接下载内容；
 
 将配置文件命名为 `.cz-config.js` 放在工程的跟目录下，然后执行 `git cz` 即可看到效果；
 
