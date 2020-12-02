@@ -107,11 +107,11 @@ npm install -g commitizen
 
 #### 提交流程
 
-![](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/write-git-commit/husky-success.jpg)
+![](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/write-git-commit/git-cz-1.jpg)
 
 #### git log 效果
 
-![](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/write-git-commit/git-cz-1.jpg)
+![](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/write-git-commit/git-log.jpg)
 
 ## cz-customizable | 客制化信息规范
 可以发现，上面的指令是英文的，对于一些英文苦手而言不太友好，那么有没有可能我们可以将它的提示改成中文的呢？甚至把提示修改为更加符合我们的项目呢？
