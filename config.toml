@@ -9,6 +9,7 @@ paginate = 4                           # shows the number of articles  # 首页�
 enableEmoji = true
 googleAnalytics = ""                   # your google analytics id
 disqusShortname = ""                   # your discuss shortname
+enableGitInfo = true
 
 pygmentsUseClasses = true
 pygmentCodeFences = true
@@ -54,6 +55,7 @@ pygmentscodefencesguesssyntax = true
   enableMathJax = true                                                 # enable mathjax  # 是否使用mathjax（数学公式）
   enableSummary = true                                                 # display the article summary  # 是否显示文章摘要
   mainSections = ["posts","post"]
+  gitRepo = "https://github.com/chency147/blog"
 
 [params.header]
   # 桌面端导航栏模式 ("fixed", "normal", "auto")
@@ -113,6 +115,13 @@ pygmentscodefencesguesssyntax = true
 [markup.tableOfContents]
   startLevel = 2
   endLevel = 6
+
+[params.page]
+  twemoji = true
+  lightgallery = true
+  linkToMarkdown = true
+  fontawesome = true
+  fraction = true
 
 [params.page.share]
   enable = true
@@ -182,3 +191,4 @@ pygmentscodefencesguesssyntax = true
   highlightTag = "em"
   # LoveIt 新增 | 0.2.4 是否在搜索索引中使用基于 baseURL 的绝对路径
   absoluteURL = false
+

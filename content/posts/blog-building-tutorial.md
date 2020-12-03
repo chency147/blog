@@ -6,6 +6,7 @@ draft: ture
 toc:
   auto: false
 featuredImage: https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/blog-building-tutorial/cover.jpg
+lightgallery: true
 ---
 
 ## 写在前面
@@ -52,7 +53,7 @@ featuredImage: https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/blog-bui
 Openresty的安装教程可以在[官方文档](https://openresty.org/cn/installation.html)，这里只简单例举一下 centos 上的安装方法，推荐直接使用官方编译好的 Linux包进行安装([官方文档](https://openresty.org/cn/linux-packages.html))；
 
 安装指令参考如下
-```
+```bash
 # 添加 openresty yum 源
 wget https://openresty.org/package/centos/openresty.repo
 sudo mv openresty.repo /etc/yum.repos.d/
@@ -65,7 +66,7 @@ sudo yum install -y openresty
 安装完毕之后，可直接使用指令 `/usr/local/openresty/nginx/sbin/nginx` 启动 nginx 服务；
 
 记录两条常用的 nginx 指令如下
-```
+```bash
 # 检查 nginx 配置是否正确
 /usr/local/openresty/nginx/sbin/nginx -t
 # 检查并重新载入 nginx 配置
@@ -77,11 +78,11 @@ HTTPS 支持有两种，CDN方式 和 申请SSL证书方式。
 #### CDN方式（推荐）
 推荐直接使用 [Cloudﬂare](https://www.cloudflare.com/) 管理的域名，它可以帮助我们非常方便地支持 HTTPS；
 
-![Cloudflare HTTPS 配置界面](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/blog-building-tutorial/cloudflare-ssl.png)
+![Cloudflare HTTPS 配置界面](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/blog-building-tutorial/cloudflare-ssl.png "Cloudflare HTTPS 配置界面")
 
 #### SSL证书方式
 可使用免费的 [Let's Entrypt](https://letsencrypt.org/zh-cn/) 进行申请，现在已经支持申请泛域名。相关指令收录如下：
-```
+```bash
 # 下载证书申请工具
 wget https://dl.eff.org/certbot-auto
 chmod +x certbot-auto
@@ -115,7 +116,7 @@ IMPORTANT NOTES:
    Donating to EFF:                    https://eff.org/donate-le
 ```
 上面提示中说明了证书所在位置，直接在nginx的443端口server中添加如下配置再reload即可
-```
+```nginx
 server {
     listen       443 ssl;
     server_name  blog.rickchen.info;
@@ -136,7 +137,7 @@ post_hook = /usr/local/nginx/sbin/nginx -s reload
 ```
 
 - 添加定时任务，`vim /etc/crontab` 添加下面配置即可，注意系统的crond服务需要开启；
-```
+```bash
 # 每天凌晨2点检查并续期HTTPS证书
 0 2 * * * root /var/opt/letsencrypt/letsencrypt-auto renew -q > /dev/null 2>&1 &
 ```
@@ -145,7 +146,7 @@ post_hook = /usr/local/nginx/sbin/nginx -s reload
 直接在 [Hugo Release](https://github.com/gohugoio/hugo/releases) 页面中下载最新的、适用于自己操作系统的二进制包即可。服务器和自己的电脑上都应该安装一下。
 
 以 centos 为例，执行以下指令即可完成安装：
-```
+```bash
 # 注意替换成最新的版本链接，编写本文时最新的版本为0.74.3
 wget "https://github.com/gohugoio/hugo/releases/download/v0.74.3/hugo_0.74.3_Linux-64bit.tar.gz"
 # 解压
@@ -154,11 +155,11 @@ mv hugo /usr/local/bin/
 ```
 
 hugo 安装完毕之后，可以先确定好自己博客文件的存放路径，把 nginx 配置设置好，以我的博客为例，执行如下指令创建目录；
-```
+```bash
 mkdir /var/www/blog
 ```
 这里推荐大家修改一下这个文件夹的用户所属，因为后面的 webhook 功能需要执行博客更新指令，用 root 用户会有风险；
-```
+```bash
 groupadd blog
 usradd blog -g blog
 chown -R blog:blog /var/www/blog/ 
@@ -168,7 +169,7 @@ chown -R blog:blog /var/www/blog/
 
 ### GitHub 项目创建
 本博客的内容维护在 [chency147/blog](https://github.com/chency147/blog)。大家可以在自己的 GitHub 上创建自己的一个博客工程，拉取到本地之后就可以开始创作了。
-```
+```bash
 # 仓库克隆
 git clone git@github.com:chency147/blog.git
 # 初始化博客
@@ -182,24 +183,23 @@ cd blog
 - 注意
 上面的仓库拉取方式为 SSH 方式，需要将在自己电脑上生成SSH钥匙对，并将公钥上传到 GitHub 的 [个人配置](https://github.com/settings/keys)。
 没有钥匙生成过对的同学的同学可以在 `Git Bash` 中执行如下指令生成并查看
-```
+```bash
 ssh-keygen
 # 一路回车到底
 cat ~/.ssh/id_rsa.pub
 # cat 指令输出即为公钥内容
 ```
 将上述输出的公钥内容拷贝并添加到 GitHub SSH Key 管理页面中：
-![github-sshkey-1.jpg](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/blog-building-tutorial/github-sshkey-1.jpg)
+![GitHub SSH Key 添加流程-1](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/blog-building-tutorial/github-sshkey-1.jpg "GitHub SSH Key 添加流程-1")
 <center style="font-size:14px;color:#C0C0C0;text-decoration:underline">SSH KEY添加[1]</center> 
 
-![github-sshkey-2.jpg](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/blog-building-tutorial/github-sshkey-2.jpg)
+![GitHub SSH Key 添加流程-2](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/blog-building-tutorial/github-sshkey-2.jpg "GitHub SSH Key 添加流程-2")
 <center style="font-size:14px;color:#C0C0C0;text-decoration:underline">SSK KEY添加[2]</center> 
 
 由于服务器端也需要拉取工程内容，所以服务器端 blog 用户的公钥也需要添加到GitHub配置中。
 
 下面完成博客的首次提交
-```
-#
+```bash
 hugo new post/hello-world.md
 git add -A
 git commit -m "Hello World"
@@ -208,7 +208,7 @@ git push -u origin master
 
 ### 博客首次亮相
 登录到服务器，执行指令 `su blog` 切换到 blog 用户，执行如下指令拉取工程并使用hugo生成页面文件：
-```
+```bash
 cd /var/www/blog
 git clone git@github.com:chency147/blog.git .
 git submodule init
@@ -223,14 +223,14 @@ hugo -D
 推荐直接使用 [adnanh/webhook](https://github.com/adnanh/webhook) 项目搭建webhook服务。
 
 ##### webhook服务安装
-```
+```bash
 wget "https://github.com/adnanh/webhook/releases/download/2.7.0/webhook-linux-amd64.tar.gz"
 tar -zxvf webhook-linux-amd64.tar.gz -C .
 mv webhook-linux-amd64/webhook /usr/local/bin/
 ```
 ##### 部署脚本编写
 以我的博客为例，我的部署脚本存放在 `/var/www/blog_deploy.sh`，其作用为 从git仓库中拉取最新的博客内容，并使用 hugo 进行编译，其内容如下：
-```
+```bash
 #!/bin/bash
 cd /var/www/blog
 git checkout master
@@ -244,7 +244,7 @@ hugo -D
 
 ##### webhook配置编写
 配置文件位于 `/etc/webhook/hooks.json`，使用vim打开键入如下内容并保存；
-```
+```json
 [
   {
     "id": "blog_deploy",
@@ -286,12 +286,12 @@ hugo -D
 
 ##### webhook服务启动
 切换到 blog 用户，执行如下指令启动webhook服务；
-```
+```bash
 nohup webhook -port 9001 -ip 127.0.0.1 -hooks /etc/webhook/hooks.json > /dev/null 2>&1 &
 ```
 
 优秀的同学可以使用 `supervisord` 进行进程守护，本文将不再赘述，只是贴一下配置文件内容；
-```
+```ini
 [program:WebHook]
 command = webhook -port 9001 -ip 127.0.0.1 -hooks /etc/webhook/hooks.json
 autorestart = true
@@ -307,7 +307,7 @@ user = blog
 
 ##### webhook服务nginx转发
 在自己的 nginx 配置中添加如下转发配置并reload，这个路径完全可以根据自己的喜好自定义；
-```
+```nginx
 location ~ ^/XXXXXXXX/webhook/(.*) {
     proxy_pass http://127.0.0.1:9001/$1;
 }
@@ -317,14 +317,14 @@ location ~ ^/XXXXXXXX/webhook/(.*) {
 #### GitHub端
 进入仓库的 Settings 页卡，选择 Webhooks 选项，在页面上进行 webhook 添加；
 
-![](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/blog-building-tutorial/github-webhook-1.jpg)
-![](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/blog-building-tutorial/github-webhook-2.jpg)
+![GitHub webhook 设置-1](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/blog-building-tutorial/github-webhook-1.jpg "GitHub webhook 设置-1")
+![GitHub webhook 设置-2](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/blog-building-tutorial/github-webhook-2.jpg "GitHub webhook 设置-2")
 
 执行完上述配置之后，我们随便修改一下文章内容，然后进行一次Git提交和推送，博客的文章就能自动更新啦！
 
 ### Server酱通知
 根据Server酱[官方网站](http://sc.ftqq.com/3.version)上的接入流程，登录账号获取到自己的SCKEY，然后修改博客部署脚本为以下内容即可。
-```
+```bash
 #!/bin/bash
 # 博客文件拉取
 cd /var/www/blog
@@ -346,7 +346,7 @@ curl "https://sc.ftqq.com/${secret}.send?text=${title}&desp=${content}"
 
 然后再尝试推送看看，就能收到编译结果的通知啦。
 
-![](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/blog-building-tutorial/wechat-notice.jpg)
+![Server酱通知效果](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/blog-building-tutorial/wechat-notice.jpg "Server酱通知效果")
 
 
 ## 总结

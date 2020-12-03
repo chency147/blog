@@ -3,6 +3,8 @@ title: "写好 Git Commit Log"
 date: 2020-12-03T02:24:42+08:00
 draft: true
 featuredImage: https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/write-git-commit/cover.jpg
+lightgallery: true
+linkToMarkdown: true
 ---
 ## 背景
 公司部门开发团队今年开始将代码仓库从svn迁移到GitLab，迁移过程中我也进行了Git使用方式的分享，帮助团队的一些小伙伴了解了Git的历史和基本使用方法。
@@ -21,12 +23,12 @@ AngularJs的commit规范大致为如下形式：
 <footer>
 ```
 其中第一部分为 `header`，第二部分为 `body`，第三部分为 `footer`；
-#### header
+#### header | 消息头部
 `header` 要求为一行，需要包含 `type`，`scope`, `subject` 字段，其总体内容需要控制在100个字符（中文则为50）以内，方便在 `GitHub`  或 `GitLab` 中查看，示例；
 ```
 <feat>(login): 新增登录界面验证码验证
 ```
-##### type
+##### type | 提交类型
 `type` 字段表示本次提交的类型，需要为下列值其中之一：
 - `feat`: 新增功能特性；
 - `fix`: BUG修复；
@@ -36,21 +38,21 @@ AngularJs的commit规范大致为如下形式：
 - `pref`: 性能优化；
 - `test`: 新增或者修改测试用例；
 - `chore`: 构建工具或者辅助工具的变动，比如文档生成工具、CI配置等；
-##### scope
+##### scope | 改动范围
 `scope` 表示本次改动所影响的范围，可以是项目的模块名称，比如订单、用户信息等，根据业务具体配置；
 当一次影响到多个 `scope` 时，可以填写一个 `*` 来表示；
-##### subject
+##### subject | 简要改动内容
 `subject` 用以简单介绍本次提交的改动内容，有以下规范：
 - 使用动词开头，第一人称现在时：比如使用 `change` 而不是 `changed` 或 `changes`；
 - 首字母小写（中文无此要求）；
 - 不要使用句号结尾；
-#### body
+#### body | 详细改动内容
 `body` 用来说明本次改动的具体内容，需要包含 `改动动机` 和 `改动的前后对比`，可以多行进行描述，示例：
 ```
 本次将数据库插件从 mybatis 修改为 mybatis-plus；
 减少XXX接口redis操作次数，从而提升接口性能；
 ```
-#### footer
+#### footer | 消息尾部
 `footer` 用来描述 `不兼容改动` 和 `关联任务`；
 - 不兼容改动
 不兼容改动的描述需要以 `BREAKING CHANGE:` 开头，跟上一个空格，开始编写不兼容改动的简单说明，前两行用来填写该说明；
@@ -98,20 +100,21 @@ npm install -g commitizen
 ```
 ### 使用
 使用指令 `git cz` 或 `git-cz` 代替 `git commit`，即可按照工具的提示进行提交，而且工具是具有一定的交互性，十分友好；
-> **小贴士**
-> `windows` 的 `git bash` 下使用需要使用指令 `winpty git-cz`，否则交互式操作会失效；
-> 可以使用下面的指令来为之设置别名，下次直接使用 `git-cz` 就好啦；
-> ```bash
-> echo 'alias git-cz="winpty git-cz"' >> ~/.bashrc_profile; source ~/.bashrc_profile
-> ```
+{{< admonition tip >}}
+`windows` 的 `git bash` 下使用需要使用指令 `winpty git-cz`，否则交互式操作会失效；
+可以使用下面的指令来为之设置别名，下次直接使用 `git-cz` 就好啦；
+```bash
+echo 'alias git-cz="winpty git-cz"' >> ~/.bashrc_profile; source ~/.bashrc_profile
+```
+{{</ admonition >}}
 
 #### 提交流程
 
-![](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/write-git-commit/git-cz-1.jpg)
+![使用git-cz指令提交](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/write-git-commit/git-cz-1.jpg "使用git-cz指令提交")
 
 #### git log 效果
 
-![](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/write-git-commit/git-log.jpg)
+![git log 效果](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/write-git-commit/git-log.jpg "git log 效果")
 
 ## cz-customizable | 客制化信息规范
 可以发现，上面的指令是英文的，对于一些英文苦手而言不太友好，那么有没有可能我们可以将它的提示改成中文的呢？甚至把提示修改为更加符合我们的项目呢？
@@ -132,7 +135,7 @@ echo '{ "path": "cz-customizable" }' > ~/.czrc
 
 将配置文件命名为 `.cz-config.js` 放在工程的跟目录下，然后执行 `git cz` 即可看到效果；
 
-![](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/write-git-commit/husky-success.jpg)
+![中文输入提示](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/write-git-commit/git-cz-zh.jpg "中文输入提示")
 
 可以看到提示都变成中文啦，`scope` 可以根据项目情况进行调整，而且 `footer` 我在这里更换为 `JIRA`，更加符合我们的工作流；
 
@@ -155,7 +158,7 @@ echo "module.exports = {extends: ['@commitlint/config-conventional']}" > commitl
 commitlint --from HEAD~1 --to HEAD --verbose
 ```
 
-![](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/write-git-commit/commitlint-1.jpg)
+![commitlint效果](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/write-git-commit/commitlint-1.jpg "commitlint效果")
 
 ## husky | 确保提交前检查
 `husky` 可以轻松地管理项目中的git钩子，其基本原理就是**将工程的 hooks 路径修改到项目的根目录下的 `.husky` 目录**，然后在此目录中管理 hooks 脚本，这些脚本可以被代码管理起来。
@@ -182,11 +185,11 @@ husky add commit-msg "commitlint --edit $1"
 ### 验证 hook
 执行一个携带非规范的信息提交，可以发现本地的提交已经会被拦截：
 
-![](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/write-git-commit/husky-failed.jpg)
+![消息检查不通过](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/write-git-commit/husky-failed.jpg "消息检查不通过")
 
 通过 `cz-cli` 生成的信息则可以通过验证；
 
-![](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/write-git-commit/husky-success.jpg)
+![消息检查通过](https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/write-git-commit/husky-success.jpg "消息检查通过")
 
 
 ## IDE集成
