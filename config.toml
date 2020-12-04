@@ -203,3 +203,26 @@ pygmentscodefencesguesssyntax = true
       repo = "blog"
       clientId = "#GITALK_CLIENT_ID#"
       clientSecret = "#GITALK_CLIENT_SECRET#"
+  # LoveIt 新增 | 0.2.10 网站 SEO 配置
+  [params.seo]
+    # 图片 URL
+    image = "https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/20201122213325.png"
+    # 缩略图 URL
+    thumbnailUrl = "https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/20201122213325.png"
+
+  # LoveIt 新增 | 0.2.0 网站分析配置
+  [params.analytics]
+    enable = true
+    # Google Analytics
+    [params.analytics.google]
+      id = "G-T8PLEDPWE5"
+      # 是否匿名化用户 IP
+      anonymizeIP = true
+
+  # 网站验证代码，用于 Google/Bing/Yandex/Pinterest/Baidu
+  [params.verification]
+    google = "8PxTMCz1toArryLo82wxbuenoAZGQS0g-VhbYo4Mx-8"
+    bing = "8PxTMCz1toArryLo82wxbuenoAZGQS0g-VhbYo4Mx-8"
+    yandex = ""
+    pinterest = ""
+    baidu = "code-5uvntKqMCO"
