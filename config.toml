@@ -217,7 +217,7 @@ pygmentscodefencesguesssyntax = true
     [params.analytics.google]
       id = "G-T8PLEDPWE5"
       # 是否匿名化用户 IP
-      anonymizeIP = true
+      anonymizeIP = false
 
   # 网站验证代码，用于 Google/Bing/Yandex/Pinterest/Baidu
   [params.verification]
