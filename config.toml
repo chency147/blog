@@ -222,7 +222,7 @@ pygmentscodefencesguesssyntax = true
   # 网站验证代码，用于 Google/Bing/Yandex/Pinterest/Baidu
   [params.verification]
     google = "8PxTMCz1toArryLo82wxbuenoAZGQS0g-VhbYo4Mx-8"
-    bing = "8PxTMCz1toArryLo82wxbuenoAZGQS0g-VhbYo4Mx-8"
+    bing = "5C16B907CBB005533DCEBE5C88A6D311"
     yandex = ""
     pinterest = ""
     baidu = "code-5uvntKqMCO"
