@@ -5,6 +5,8 @@ draft: true
 featuredImage: https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/write-git-commit/cover.jpg
 lightgallery: true
 linkToMarkdown: true
+tags: ["git"]
+categories: ["技术", "工作流"]
 ---
 ## 背景
 公司部门开发团队今年开始将代码仓库从svn迁移到GitLab，迁移过程中我也进行了Git使用方式的分享，帮助团队的一些小伙伴了解了Git的历史和基本使用方法。

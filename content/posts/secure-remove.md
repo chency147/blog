@@ -6,6 +6,8 @@ toc:
   auto: false
 # featuredImage: https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/secure-remove/cover.jpg
 lightgallery: true
+tags: ["linux", "运维"]
+categories: ["技术"]
 ---
 
 {{< admonition danger >}}

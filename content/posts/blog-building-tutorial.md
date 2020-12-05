@@ -7,6 +7,8 @@ toc:
   auto: false
 featuredImage: https://cdn.jsdelivr.net/gh/chency147/image-bed@main/img/blog-building-tutorial/cover.jpg
 lightgallery: true
+tags: ["hugo", "博客"]
+categories: ["技术"]
 ---
 
 ## 写在前面
