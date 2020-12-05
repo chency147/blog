@@ -178,7 +178,7 @@ pygmentscodefencesguesssyntax = true
 [params.search]
   enable = true
   # 搜索引擎的类型 ("lunr", "algolia")
-  type = "lunr"
+  type = "algolia"
   # 文章内容最长索引长度
   contentLength = 4000
   # 搜索框的占位提示语
@@ -191,6 +191,10 @@ pygmentscodefencesguesssyntax = true
   highlightTag = "em"
   # LoveIt 新增 | 0.2.4 是否在搜索索引中使用基于 baseURL 的绝对路径
   absoluteURL = false
+  [params.search.algolia]
+    index = "blog"
+    appID = "WUDLCZYR0H"
+    searchKey = "9ee28001c679bac1531dca4e916890a8"
 
 # 评论系统设置
   [params.page.comment]
