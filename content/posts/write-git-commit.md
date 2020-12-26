@@ -28,7 +28,7 @@ AngularJs的commit规范大致为如下形式：
 #### header | 消息头部
 `header` 要求为一行，需要包含 `type`，`scope`, `subject` 字段，其总体内容需要控制在100个字符（中文则为50）以内，方便在 `GitHub`  或 `GitLab` 中查看，示例；
 ```
-<feat>(login): 新增登录界面验证码验证
+feat(login): 新增登录界面验证码验证
 ```
 ##### type | 提交类型
 `type` 字段表示本次提交的类型，需要为下列值其中之一：
@@ -166,17 +166,15 @@ commitlint --from HEAD~1 --to HEAD --verbose
 `husky` 可以轻松地管理项目中的git钩子，其基本原理就是**将工程的 hooks 路径修改到项目的根目录下的 `.husky` 目录**，然后在此目录中管理 hooks 脚本，这些脚本可以被代码管理起来。
 
 ### 安装
-可以使用如下指令进行安装，建议直接安装最新版本(v5)。
+可以使用如下指令进行安装，建议直接安装最新版本(v5)；
 ```bash
 npm install husky@next -g
 ```
-然后在工程的 `package.json` 中添加如下片段：
-```json
-  "scripts": {
-    "postinstall": "husky install"
-  }
+然后在工程目录中执行如下指令即可
+```bash
+husky install
 ```
-这样可以在每次的 `npm install` 操作之后都能使得 hooks 路径被 husky 所修改。
+当从远程仓库第一次拉取到项目时，也需要在工程目录中执行上述指令让hook生效；
 
 ### 添加 hook
 执行如下指令即可完成 commit 信息的提交前检查：
