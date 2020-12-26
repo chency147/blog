@@ -179,7 +179,7 @@ husky install
 ### 添加 hook
 执行如下指令即可完成 commit 信息的提交前检查：
 ```bash
-husky add commit-msg "commitlint --edit $1"
+husky add .husky/commit-msg "commitlint --edit $1"
 ```
 
 ### 验证 hook
